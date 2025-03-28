@@ -16,3 +16,11 @@ src/*.depend
 *.o
 *.rar
 *.dll
+*.a
+*.so
+*.la
+.idea
+.vscode
+build*/
+install*/
+cmake-build*/
