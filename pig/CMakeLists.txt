@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 project(PigDev VERSION 1.0.0)
 
-set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # install SDL2
@@ -24,6 +23,7 @@ file(GLOB CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 file(GLOB H_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/pig/*.h")
 
 add_library(pig STATIC)
+add_library(pig::pig ALIAS pig)
 
 target_sources(pig 
 PUBLIC
@@ -34,6 +34,8 @@ PUBLIC
 PRIVATE
     ${CPP_FILES}
 )
+
+target_compile_features(pig PUBLIC cxx_std_20)
 
 target_compile_definitions(pig PUBLIC
         PIGCOMAUDIO
@@ -60,6 +62,17 @@ target_link_libraries(pig PUBLIC
     swresample
     swscale
 )
-add_custom_command(TARGET pig POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_CURRENT_BINARY_DIR}/assets
+
+install(TARGETS pig
+    EXPORT pigTargets
+    FILE_SET pig_headers
+)
+
+install(EXPORT pigTargets
+    DESTINATION share/cmake/pig
+    NAMESPACE pig::
+)
+
+install(FILES ./cmake/pigConfig.cmake
+    DESTINATION share/cmake/pig
 )

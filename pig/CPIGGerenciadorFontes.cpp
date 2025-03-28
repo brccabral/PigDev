@@ -22,9 +22,9 @@ void CPIGGerenciadorFontes::Inicia()
     // fontes[0] = new CPIGMapaCaracteresDinamicos("..//fontes//arial.ttf",PIG_FONTE_PADRAO_TAM,0);
 
     fontes = new CPIGRepositorio<PIGFonte>(PIG_MAX_FONTES, "fontes");
-    fontes->Insere(new CPIGFonte(
-            PIG_FONTE_PADRAO_NOME, PIG_FONTE_PADRAO_TAM, PIG_ESTILO_NORMAL, PIG_FONTE_PADRAO_COR,
-            0));
+    // fontes->Insere(new CPIGFonte(
+    //         PIG_FONTE_PADRAO_NOME, PIG_FONTE_PADRAO_TAM, PIG_ESTILO_NORMAL, PIG_FONTE_PADRAO_COR,
+    //         0));
     // fontes->Insere(new
     // CPIGMapaCaracteresDinamicos("..//fontes//arial.ttf",PIG_FONTE_PADRAO_TAM,0));
 }

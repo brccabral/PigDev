@@ -12,6 +12,8 @@ int main(int argc, char *args[])
     // associando o teclado (basta uma única vez) com a variável meuTeclado
     meuTeclado = GetTeclado();
 
+    CriaFonteNormal("assets/fontes/MesloLGS NF Regular.ttf", PIG_FONTE_PADRAO_TAM, PIG_FONTE_PADRAO_COR, PIG_ESTILO_NORMAL);
+
     // loop principal do jogo
     while (JogoRodando())
     {
@@ -25,6 +27,7 @@ int main(int argc, char *args[])
         IniciaDesenho();
 
         // todas as chamadas de desenho devem ser feitas aqui na ordem desejada
+        EscreverEsquerda("Hello, World", 20, 40, VERMELHO);
 
         // o frame totalmente pronto será mostrado na tela
         EncerraDesenho();
